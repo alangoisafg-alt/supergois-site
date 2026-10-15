@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supermercados GOIS</title>
+<meta name="description" content="Supermercados GOIS — supermercado em Limeira/SP. Ofertas da semana, horário, endereço e atendimento pelo WhatsApp. D. L. ALIMENTOS LTDA, CNPJ 61.852.474/0001-56.">
+<meta property="og:title" content="Supermercados GOIS — Limeira/SP">
+<meta property="og:description" content="Ofertas da semana e atendimento pelo WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://supergois.com.br/">
+<meta property="og:image" content="https://supergois.com.br/logo.jpg">
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<style>
+  /* Layout: faixa de ofertas no topo, cabeçalho com logo, hero com carrinho, cartões de serviço,
+     lojas/horário/contato em grade, rodapé institucional com razão social e CNPJ. */
+  :root {
+    --azul: #0b3a8f; --azul-2: #0d4bb8; --azul-escuro: #06245c;
+    --vermelho: #e3262f; --amarelo: #ffc928; --verde: #1aa152;
+    --fundo: #f5f7fb; --tinta: #16202e; --tinta-2: #5a6475; --cartao: #ffffff; --linha: #e2e7ef;
+    --f-titulo: "Archivo Black", "Arial Black", Arial, sans-serif;
+    --f-texto: "Nunito Sans", "Segoe UI", Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: var(--f-texto); line-height: 1.55; }
+  a { color: var(--azul-2); }
+  .faixa { background: var(--vermelho); color: #fff; text-align: center; font-weight: 800;
+           font-size: .9rem; letter-spacing: .04em; padding: 8px 16px; }
+  .faixa span { background: var(--amarelo); color: var(--tinta); border-radius: 4px; padding: 1px 8px; margin-left: 6px; }
+  .topo { background: #fff; border-bottom: 1px solid var(--linha); position: sticky; top: 0; z-index: 5; }
+  .topo .in { max-width: 1080px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+  .topo img { width: 52px; height: 52px; border-radius: 50%; }
+  .topo strong { font-family: var(--f-titulo); color: var(--azul); font-size: 1.15rem; letter-spacing: .01em; }
+  .topo nav { margin-left: auto; display: flex; gap: 18px; font-weight: 700; font-size: .95rem; }
+  .topo nav a { color: var(--tinta); text-decoration: none; }
+  .topo nav a:hover { color: var(--azul-2); }
+  @media (max-width: 640px) { .topo nav { display: none; } }
+
+  .hero { background: radial-gradient(1200px 500px at 85% 20%, var(--azul-2), transparent 60%),
+                      linear-gradient(135deg, var(--azul), var(--azul-escuro));
+          color: #fff; overflow: hidden; }
+  .hero .in { max-width: 1080px; margin: 0 auto; padding: 48px 16px 56px; display: grid;
+              grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: center; }
+  @media (max-width: 800px) { .hero .in { grid-template-columns: 1fr; text-align: center; } .hero svg { max-width: 280px; margin: 0 auto; } }
+  .hero h1 { font-family: var(--f-titulo); font-size: clamp(2rem, 5.5vw, 3.3rem); line-height: 1.05; margin: 0 0 14px; text-wrap: balance; }
+  .hero h1 em { font-style: normal; color: var(--amarelo); }
+  .hero p { font-size: 1.12rem; opacity: .95; margin: 0 0 22px; max-width: 46ch; }
+  @media (max-width: 800px) { .hero p { margin-left: auto; margin-right: auto; } }
+  .botoes { display: flex; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 800px) { .botoes { justify-content: center; } }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; text-decoration: none;
+         padding: 14px 22px; border-radius: 999px; font-size: 1rem; }
+  .btn-zap { background: var(--verde); color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+  .btn-claro { background: rgba(255,255,255,.12); color: #fff; border: 2px solid rgba(255,255,255,.5); }
+  .btn:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; }
+  .hero svg { width: 100%; height: auto; display: block; }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 36px 16px 20px; }
+  .titulo-sec { font-family: var(--f-titulo); color: var(--azul); font-size: 1.5rem; margin: 8px 0 18px; text-align: center; }
+  .servicos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .serv { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 22px; text-align: center; }
+  .serv .ic { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 10px;
+              font-size: 1.7rem; background: #eaf0fb; }
+  .serv h3 { margin: 4px 0 6px; font-size: 1.08rem; }
+  .serv p { margin: 0; color: var(--tinta-2); font-size: .95rem; }
+
+  .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .cartao { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 22px; min-width: 0; }
+  .cartao h3 { margin: 0 0 10px; color: var(--azul); font-size: 1.12rem; display: flex; align-items: center; gap: 8px; }
+  .cartao p { margin: 4px 0; }
+  .hor { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .hor td { padding: 6px 0; border-bottom: 1px dashed var(--linha); }
+  .hor td:last-child { text-align: right; font-weight: 800; }
+
+  .chamada { margin: 40px 0 10px; background: linear-gradient(135deg, var(--vermelho), #b8141c); color: #fff;
+             border-radius: 20px; padding: 28px 22px; text-align: center; }
+  .chamada h2 { font-family: var(--f-titulo); margin: 0 0 8px; font-size: clamp(1.3rem, 4vw, 1.9rem); }
+  .chamada p { margin: 0 0 16px; opacity: .95; }
+
+  footer { background: var(--azul-escuro); color: #cdd6ea; margin-top: 40px; }
+  footer .in { max-width: 1080px; margin: 0 auto; padding: 28px 16px; display: grid; gap: 18px;
+               grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); font-size: .92rem; }
+  footer h4 { color: #fff; margin: 0 0 6px; }
+  footer p { margin: 3px 0; }
+  footer .base { text-align: center; border-top: 1px solid rgba(255,255,255,.12); padding: 14px 16px; font-size: .82rem; }
+  @media (prefers-reduced-motion: no-preference) { .roda { animation: gira 6s linear infinite; transform-origin: center; transform-box: fill-box; } }
+  @keyframes gira { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<div class="faixa">OFERTAS TODA SEMANA <span>Cliente VIP tem preço especial</span></div>
+
+<div class="topo"><div class="in">
+  <img src="logo.jpg" alt="Logo Supermercados GOIS">
+  <strong>SUPERMERCADOS GOIS</strong>
+  <nav><a href="#lojas">Lojas</a><a href="#horario">Horário</a><a href="#contato">Contato</a></nav>
+</div></div>
+
+<section class="hero"><div class="in">
+  <div>
+    <h1>Seu mercado do dia a dia, <em>com preço de verdade.</em></h1>
+    <p>Hortifrúti fresquinho, açougue, padaria e mercearia completa em Limeira. Receba as ofertas da semana direto no seu WhatsApp.</p>
+    <div class="botoes">
+      <a class="btn btn-zap" href="https://wa.me/5519999565869?text=Oi%20Gois">💬 Receber ofertas no WhatsApp</a>
+      <a class="btn btn-claro" href="#lojas">📍 Como chegar</a>
+    </div>
+  </div>
+  <svg viewBox="0 0 420 330" role="img" aria-label="Carrinho de supermercado cheio de compras">
+    <ellipse cx="215" cy="306" rx="170" ry="12" fill="rgba(0,0,0,.25)"/>
+    <!-- compras -->
+    <rect x="118" y="70" width="58" height="92" rx="8" fill="#ffc928"/>
+    <rect x="126" y="86" width="42" height="22" rx="4" fill="#e3262f"/>
+    <rect x="184" y="52" width="40" height="110" rx="10" fill="#7fd36b"/>
+    <rect x="190" y="40" width="28" height="18" rx="5" fill="#4aa84a"/>
+    <circle cx="258" cy="120" r="34" fill="#e3262f"/>
+    <path d="M258 86 q8 -14 20 -12" stroke="#4aa84a" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <rect x="292" y="92" width="52" height="70" rx="8" fill="#ffffff"/>
+    <rect x="298" y="104" width="40" height="16" rx="3" fill="#0d4bb8"/>
+    <circle cx="150" cy="58" r="20" fill="#ff9f1c"/>
+    <!-- cesto do carrinho -->
+    <path d="M70 92 L96 92 L120 230 L330 230 L362 120 L104 120" fill="none" stroke="#ffffff" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M108 150 L352 150 M114 182 L342 182 M120 212 L334 212" stroke="#ffffff" stroke-width="5" opacity=".75"/>
+    <path d="M170 120 L182 230 M230 120 L234 230 M290 120 L284 230" stroke="#ffffff" stroke-width="5" opacity=".75"/>
+    <path d="M120 230 L112 262 L330 262" fill="none" stroke="#ffffff" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle class="roda" cx="140" cy="284" r="18" fill="#16202e" stroke="#ffffff" stroke-width="6"/>
+    <circle class="roda" cx="306" cy="284" r="18" fill="#16202e" stroke="#ffffff" stroke-width="6"/>
+    <path d="M40 92 L72 92" stroke="#e3262f" stroke-width="14" stroke-linecap="round"/>
+  </svg>
+</div></section>
+
+<main>
+  <h2 class="titulo-sec">Por que comprar no Gois</h2>
+  <div class="servicos">
+    <div class="serv"><div class="ic">🥩</div><h3>Açougue</h3><p>Carnes selecionadas, cortadas e pesadas na hora.</p></div>
+    <div class="serv"><div class="ic">🥬</div><h3>Hortifrúti</h3><p>Frutas, verduras e legumes frescos todos os dias.</p></div>
+    <div class="serv"><div class="ic">⭐</div><h3>Cliente VIP</h3><p>Cadastre-se no caixa e ganhe preços e ofertas exclusivas.</p></div>
+    <div class="serv"><div class="ic">💳</div><h3>Pagamento fácil</h3><p>Dinheiro, PIX, cartões de débito e crédito.</p></div>
+  </div>
+
+  <div class="grade">
+    <section class="cartao" id="lojas">
+      <h3>📍 Nossa loja</h3>
+      <p><strong>Loja 1</strong></p>
+      <p>R. José Von Zuben, 44<br>Residencial Morada das Acácias<br>Limeira/SP</p>
+      <p style="margin-top:10px"><a href="https://www.google.com/maps/search/?api=1&query=R.+Jos%C3%A9+Von+Zuben+44+Limeira+SP">Abrir no mapa →</a></p>
+    </section>
+    <section class="cartao" id="horario">
+      <h3>🕘 Horário de funcionamento</h3>
+      <table class="hor">
+        <tr><td>Segunda a sábado</td><td>8h às 21h</td></tr>
+        <tr><td>Domingo</td><td>8h às 20h</td></tr>
+        <tr><td>Feriados</td><td>8h às 20h</td></tr>
+      </table>
+    </section>
+    <section class="cartao" id="contato">
+      <h3>📞 Fale com a gente</h3>
+      <p>Telefone: <a href="tel:+5519996537222"><strong>(19) 99653-7222</strong></a></p>
+      <p>WhatsApp: <a href="https://wa.me/5519999565869"><strong>(19) 99956-5869</strong></a><br>
+        <span style="color:var(--tinta-2);font-size:.9rem">somente mensagens</span></p>
+    </section>
+  </div>
+
+  <section class="chamada">
+    <h2>Ofertas da semana no seu WhatsApp</h2>
+    <p>Mande um “Oi” para o nosso número e receba o folheto, seu último cupom e muito mais.</p>
+    <a class="btn btn-zap" href="https://wa.me/5519999565869?text=Oi%20Gois">💬 Quero receber as ofertas</a>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <div>
+      <h4>Supermercados GOIS</h4>
+      <p><strong>D. L. ALIMENTOS LTDA</strong></p>
+      <p>CNPJ 61.852.474/0001-56</p>
+      <p>R. José Von Zuben, 44 — Residencial Morada das Acácias — Limeira/SP</p>
+    </div>
+    <div>
+      <h4>Privacidade (LGPD)</h4>
+      <p>Usamos seus dados (nome, CPF, telefone e compras) só para o cadastro de cliente, as ofertas e o
+        atendimento. Para consultar, corrigir ou excluir seus dados, fale com a gente pelo WhatsApp ou no caixa.</p>
+    </div>
+  </div>
+  <div class="base">© Supermercados GOIS · D. L. ALIMENTOS LTDA · CNPJ 61.852.474/0001-56</div>
+</footer>
+</body>
+</html>
