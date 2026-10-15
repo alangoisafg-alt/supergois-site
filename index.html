@@ -28,9 +28,11 @@
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--fundo); color: var(--tinta); font-family: var(--f-texto); line-height: 1.55; }
   a { color: var(--azul-2); }
-  .faixa { background: var(--vermelho); color: #fff; text-align: center; font-weight: 800;
-           font-size: .9rem; letter-spacing: .04em; padding: 8px 16px; }
-  .faixa span { background: var(--amarelo); color: var(--tinta); border-radius: 4px; padding: 1px 8px; margin-left: 6px; }
+  .faixa { background: var(--vermelho); color: #fff; font-weight: 800; font-size: .9rem;
+           letter-spacing: .04em; padding: 8px 16px; display: flex; flex-wrap: wrap;
+           justify-content: center; align-items: center; gap: 6px 10px; text-align: center; }
+  .faixa span { display: inline-block; white-space: nowrap; background: var(--amarelo);
+                color: var(--tinta); border-radius: 4px; padding: 2px 10px; }
   .topo { background: #fff; border-bottom: 1px solid var(--linha); position: sticky; top: 0; z-index: 5; }
   .topo .in { max-width: 1080px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
   .topo img { width: 52px; height: 52px; border-radius: 50%; }
